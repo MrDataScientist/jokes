@@ -7,16 +7,14 @@ import { DataService } from './data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
-
   update = false;
   joke: any;
 
   constructor(updates: SwUpdate, private data: DataService) {
     updates.available.subscribe(event => {
 
-      //this.update = true;
       updates.activateUpdate().then(() => document.location.reload());
 
     });
@@ -28,9 +26,4 @@ export class AppComponent {
       console.log(res);
     });
   }
-
-
-
-
-
 }
